@@ -1,26 +1,14 @@
 import numpy as np
 from matplotlib import pyplot as plt
-# importing tensorflow itself
 import tensorflow as tf
-# but our way in to tf for beginners is through keras
-# sits on top of tf and makes most of what you need available,
-# especially if you're not trying to invent new DL methods
 from tensorflow import keras
-# a couple of helpful things to import 
 from sklearn.utils.class_weight import compute_class_weight
-#for showing the results
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import pandas as pd
 from numpy.random import RandomState
 
-#xdata = pd.read_csv("/Users/paajanep/Documents/Collaborations/Antony-Dodd/R-project/data/training_set_data_April2024.sorted.csv", header=[0], index_col=[0])
-#ydata= pd.read_csv("/Users/paajanep/Documents/Collaborations/Antony-Dodd/R-project/data/IND_RED_CYCLIC_without_noisy_collapsed.classes_Apr120424.sorted.txt", header=[0], index_col=[0])
-xdata = pd.read_csv("/Users/paajanep/Documents/Collaborations/Antony-Dodd/R-project/data/training_set_data_April2024.sorted.csv", header=[0], index_col=[0])
-ydata= pd.read_csv("/Users/paajanep/Documents/Collaborations/Antony-Dodd/R-project/data/IND_RED_without_noisy_collapsed.classes_Apr120424.sorted.txt", header=[0], index_col=[0])
-
-
-#xdata = pd.read_csv("/Users/paajanep/Documents/Collaborations/Antony-Dodd/R-project/data/Cyclic_ind_rep_removed.March2024.csv", header=[0], index_col=[0])
-#ydata= pd.read_csv("/Users/paajanep/Documents/Collaborations/Antony-Dodd/R-project/data/Removed_cyclic_ind_cyclic_rep.csv", header=[0], index_col=[0])
+xdata = pd.read_csv("training_set_data_April2024.csv", header=[0], index_col=[0])
+ydata= pd.read_csv("training.classes_Apr120424.txt", header=[0], index_col=[0])
 
 
 np.random.seed(2003)
@@ -31,20 +19,6 @@ x_train = xdata[rows]
 x_test = xdata[~rows]
 y_train = ydata[rows]
 y_test = ydata[~rows]
-
-#ydata= pd.read_csv("/Users/paajanep/Documents/Collaborations/Antony-Dodd/R-project/data/training_set_February2024.csv", header=[0], index_col=[0])
-#y.index.name = None  # remove index name
-#y_train = ydata.sample(frac=0.8, random_state=rng)
-#y_test = ydata.loc[~ydata.index.isin(y_train.index)]
-#y_train = ydata.loc[xdata.index.isin(x_train.index)]
-#y_test = ydata.loc[~xdata.index.isin(x_train.index)]
-
-
-
-#x_train.index.name = None  # remove index name
-#y_train.index.name = None  # remove index name
-#x_test.index.name = None  # remove index name
-#x_test.index.name = None  # remove index name
 
 x_train = np.array(x_train)
 y_train =  np.array(y_train)
@@ -58,11 +32,10 @@ print(len(x_test))
 print(len(y_train))
 print(len(y_test))
 
-#num_classes = 23
+
 num_classes = 9
 input_shape=(96,)
 
-#labels=['no_expression','no_change','cyclic_induction','cyclic_repression','linear_induction','linear_repression','noisy','phase_later','ind_1','ind_2','ind_3','ind_4','ind_12','ind_23','ind_14','ind_24','ind_124','ind_234','rep_1','rep_4','rep_34','rep_14','rep_124']
 labels=['no_expression','no_change','cyclic_induction','cyclic_repression','linear_induction','linear_repression','phase_later','ind','rep']
 
 from sklearn.utils import compute_class_weight
@@ -107,7 +80,7 @@ x_train = x_train.reshape(len(x_train), 1, 96)
 x_test = x_test.reshape(len(x_test), 1, 96)
 
 
-#print(x_train)
+
 model = keras.Sequential(
     [keras.layers.Conv1D(filters=72, kernel_size=16, padding='same', activation='relu', input_shape=(1,96)),
     keras.layers.Flatten(),
@@ -139,7 +112,6 @@ score = model.evaluate(x_test, y_test, verbose=0)
 print("Test accuracy:", score[1])
 
 
-#labels=['no_expression','no_change','cyclic_induction','cyclic_repression','linear_induction','linear_repression','noisy','phase_later','ind_1','ind_2','ind_3','ind_4','ind_12','ind_23','ind_14','ind_24','ind_124','ind_234','rep_1','rep_4','rep_34','rep_14','rep_124']
 predictions = model.predict(x_test)
 print(predictions)
 np.savetxt('test.out', predictions, delimiter=',') 
