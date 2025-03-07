@@ -22,10 +22,10 @@ View(rpm)
 gene_names <- rpm %>% select("gene")
 
 
-control_samples <- rpm %>% select("S1A_08","S1A_20",
-                                  "D1A_08","D1A_20",
-                                  "M1A_08","M1A_20",
-                                  "J1A_08","J1A_20",
+control_samples <- rpm %>% select("S1A_09","S1A_21",
+                                  "D1A_09","D1A_21",
+                                  "M1A_09","M1A_21",
+                                  "J1A_09","J1A_21",
                "SC1_01","SC1_02","SC1_03","SC1_04","SC1_05","SC1_06",
                "DC1_01","DC1_02","DC1_03","DC1_04","DC1_05","DC1_06",
                "MC1_01","MC1_02","MC1_03","MC1_04","MC1_05","MC1_06",
