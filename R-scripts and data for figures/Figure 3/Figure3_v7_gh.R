@@ -21,7 +21,7 @@ library(ggplot2)
 # NICER COLOURS FOR DIFFERENT SEASONS
 # THE LABEL SHOULD HAVE THE COMMON OF NAME OF THE TRANSCRIPT AS WELL, A. THALIANA ORTHOLOGUE
 
-#The data needs to have 24 swapped over!!!
+
 ##USING metadata_Mar2024
 transcript_data_annotated <- read_tsv("analysis/1-metadata_Mar2024.txt", col_names = TRUE) 
 
