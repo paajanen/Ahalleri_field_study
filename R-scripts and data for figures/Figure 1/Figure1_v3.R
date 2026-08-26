@@ -195,17 +195,21 @@ g2 <- plot_limit_cycle(all_data_smoothed_lc,"CCA1/LHY limit cycles December","g0
 g3 <- plot_limit_cycle(all_data_smoothed_lc,"CCA1/LHY limit cycles March","g09640.t1","g01821.t2", "Ambient_Mar")
 g4 <- plot_limit_cycle(all_data_smoothed_lc,"CCA1/LHY limit cycles June","g09640.t1","g01821.t2", "Ambient_Jun")
 
-
-h1 <- plot_limit_cycle(all_data_smoothed_lc,"PRR7/PRR9 limit cycles","g19424.t1","g09644.t1", "Ambient_Sep")
-h2 <- plot_limit_cycle(all_data_smoothed_lc,"PRR7/PRR9 limit cycles","g19424.t1","g09644.t1", "Ambient_Dec")
-h3 <- plot_limit_cycle(all_data_smoothed_lc,"PRR7/PRR9 limit cycles","g19424.t1","g09644.t1", "Ambient_Mar")
-h4 <- plot_limit_cycle(all_data_smoothed_lc,"PRR7/PRR9 limit cycles","g19424.t1","g09644.t1", "Ambient_Jun")
-
+h1 <- plot_limit_cycle(all_data_smoothed_lc,"ELF4/LUX limit cycles","g12577.t1","g12727.t1", "Ambient_Sep")
+h2 <- plot_limit_cycle(all_data_smoothed_lc,"ELF4/LUX limit cycles","g12577.t1","g12727.t1", "Ambient_Dec")
+h3 <- plot_limit_cycle(all_data_smoothed_lc,"ELF4/LUX limit cycles","g12577.t1","g12727.t1", "Ambient_Mar")
+h4 <- plot_limit_cycle(all_data_smoothed_lc,"ELF4/LUX limit cycles","g12577.t1","g12727.t1", "Ambient_Jun")
 
 
 Figure1_pt1 <- ggarrange(g1,g2,g3,g4,h1,h2,h3,h4,
                          ncol = 4, nrow = 2)
 
 ggsave(plot =Figure1_pt1 , "Figure3_pt2_smoothed_20241002.pdf", width = 210, height = 297, units = "mm", dpi = "retina")
+
+Figure1_pt2 <- ggarrange(h1,h2,h3,h4,
+                         ncol = 4, nrow = 1)
+
+ggsave(plot =Figure1_pt1 , "Figure1_pt2_smoothed_260709.pdf", width = 210, height = 297, units = "mm", dpi = "retina")
+
 
 
