@@ -2,7 +2,7 @@ library(readxl)
 library(tidyverse)
 
 
-####### This prints the Figure 1 panels, made on 21.8.2026
+####### This prints the Figure 1 panels, made on 9.7.2026
 
 transcript_data_annotated <- read_tsv("1-metadata_Mar2024.txt", col_names = TRUE) 
 weather_data <- read_csv("Sample_environ_data_long_format.csv", col_names=TRUE)
@@ -204,12 +204,7 @@ h4 <- plot_limit_cycle(all_data_smoothed_lc,"ELF4/LUX limit cycles","g12577.t1",
 Figure1_pt1 <- ggarrange(g1,g2,g3,g4,h1,h2,h3,h4,
                          ncol = 4, nrow = 2)
 
-ggsave(plot =Figure1_pt1 , "Figure3_pt2_smoothed_20241002.pdf", width = 210, height = 297, units = "mm", dpi = "retina")
-
-Figure1_pt2 <- ggarrange(h1,h2,h3,h4,
-                         ncol = 4, nrow = 1)
-
-ggsave(plot =Figure1_pt1 , "Figure1_pt2_smoothed_260709.pdf", width = 210, height = 297, units = "mm", dpi = "retina")
+gsave(plot =Figure1_pt1 , "Figure1_smoothed_260709.pdf", width = 210, height = 297, units = "mm", dpi = "retina")
 
 
 
