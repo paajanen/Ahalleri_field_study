@@ -2,7 +2,7 @@ library(readxl)
 library(tidyverse)
 
 
-####### This prints the Figure 1 panels, made on 8.1.2026
+####### This prints the Figure 1 panels, made on 21.8.2026
 
 transcript_data_annotated <- read_tsv("1-metadata_Mar2024.txt", col_names = TRUE) 
 weather_data <- read_csv("Sample_environ_data_long_format.csv", col_names=TRUE)
